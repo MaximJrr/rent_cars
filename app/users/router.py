@@ -1,4 +1,6 @@
-from fastapi import APIRouter, HTTPException, status, Response, Depends
+from fastapi import APIRouter, Response, Depends
+
+from app.exceptions import UserAlreadyExistsException, UserNotExistsException, PasswordNotCorrectException
 from app.users.auth import get_hash_password, verify_password, create_access_token
 from app.users.dependencies import get_current_user
 from app.users.model import Users
@@ -16,7 +18,7 @@ async def register_user(user_data: SUsersAuth):
     existing_user = await UserService.get_one_or_none(email=user_data.email)
 
     if existing_user:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+        raise UserAlreadyExistsException
     hashed_password = get_hash_password(user_data.password)
     await UserService.create_new(email=user_data.email, hashed_password=hashed_password)
 
@@ -28,9 +30,9 @@ async def login_user(response: Response, user_data: SUsersAuth):
     user = await UserService.get_one_or_none(email=user_data.email)
 
     if not user:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+        raise UserNotExistsException
     if user and not verify_password(user_data.password, user.hashed_password):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+        raise PasswordNotCorrectException
 
     access_token = create_access_token({"sub": str(user.id)})
     response.set_cookie("access_token", access_token, httponly=True)
