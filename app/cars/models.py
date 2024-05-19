@@ -6,7 +6,11 @@ class Cars(Base):
     __tablename__ = "cars"
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
-    car_class = Column(String, nullable=False)
-    transmission = Column(String, nullable=False)
+    model = Column(String)
+    car_body = Column(String)
+    transmission = Column(String)
+    engine = Column(String)
+    wheel_drive = Column(String)
     additional_information = Column(JSON)
+    quantity = Column(Integer)
     image_id = Column(Integer)
