@@ -7,6 +7,7 @@ class Cars(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
     model = Column(String)
+    price = Column(Integer)
     car_body = Column(String)
     transmission = Column(String)
     engine = Column(String)
