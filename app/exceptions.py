@@ -37,3 +37,8 @@ class InvalidTokenFormatException(RentsException):
 class ExpiredTokenException(RentsException):
     status_code = status.HTTP_401_UNAUTHORIZED
     detail = "Expired token"
+
+
+class CarCanNotBeRented(RentsException):
+    status_code = status.HTTP_409_CONFLICT
+    detail = "There are no free cars left"
