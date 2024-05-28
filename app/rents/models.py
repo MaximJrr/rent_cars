@@ -7,8 +7,8 @@ class Rents(Base):
     id = Column(Integer, primary_key=True)
     price = Column(Integer, nullable=False)
     total_price = Column(Integer, Computed("(date_to - date_from) * price"))
-    total_days = Column(Integer, Computed("date_from - date_to"))
+    total_days = Column(Integer, Computed("date_to - date_from"))
     date_from = Column(Date, nullable=False)
     date_to = Column(Date, nullable=False)
-    user_id = Column(ForeignKey('users.id'))
-
+    user_id = Column(ForeignKey("users.id"))
+    car_id = Column(ForeignKey("cars.id"))
