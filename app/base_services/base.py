@@ -10,7 +10,7 @@ class BaseService:
         async with async_session_maker() as session:
             query = select(cls.model).filter_by(**filter_by)
             result = await session.execute(query)
-            return result.mappings().all()
+            return result.scalars().all()
 
     @classmethod
     async def get_one_or_none(cls, **filter_by):
