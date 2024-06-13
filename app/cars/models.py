@@ -1,5 +1,6 @@
 from app.database import Base
 from sqlalchemy import Column, Integer, String, JSON
+from sqlalchemy.orm import relationship
 
 
 class Cars(Base):
@@ -15,3 +16,8 @@ class Cars(Base):
     additional_information = Column(JSON)
     quantity = Column(Integer)
     image_id = Column(Integer)
+
+    rent = relationship("Rents", back_populates="car")
+
+    def __str__(self):
+        return f"Car name: {self.name}, price: {self.price}"
