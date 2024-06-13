@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from datetime import date
 
 
 class SRents(BaseModel):
@@ -6,8 +7,8 @@ class SRents(BaseModel):
     price: int
     total_price: int
     total_days: int
-    date_from: int
-    date_to: int
+    date_from: date
+    date_to: date
     user_id: int
 
     class Config:
