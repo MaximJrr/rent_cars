@@ -1,5 +1,6 @@
 from app.database import Base
 from sqlalchemy import Column, Integer, ForeignKey, Date, Computed
+from sqlalchemy.orm import relationship
 
 
 class Rents(Base):
@@ -12,3 +13,9 @@ class Rents(Base):
     date_to = Column(Date, nullable=False)
     user_id = Column(ForeignKey("users.id"))
     car_id = Column(ForeignKey("cars.id"))
+
+    user = relationship("Users", back_populates="rent")
+    car = relationship("Cars", back_populates="rent")
+
+    def __str__(self):
+        return f"Rent #{str(self.id)}"
