@@ -39,6 +39,11 @@ class ExpiredTokenException(RentsException):
     detail = "Expired token"
 
 
-class CarCanNotBeRented(RentsException):
+class CarCanNotBeRentedException(RentsException):
     status_code = status.HTTP_409_CONFLICT
     detail = "There are no free cars left"
+
+
+class NoCarsException(RentsException):
+    status_code = status.HTTP_409_CONFLICT
+    detail = "No cars"
