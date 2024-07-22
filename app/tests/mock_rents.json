@@ -1,0 +1,138 @@
+[
+    {
+        "id": 12,
+        "price": 1000,
+        "date_from": "2024-06-15",
+        "date_to": "2024-06-30",
+        "user_id": 10,
+        "car_id": 1
+    },
+    {
+        "id": 32,
+        "price": 1000,
+        "date_from": "2024-10-15",
+        "date_to": "2024-10-30",
+        "user_id": 2,
+        "car_id": 2
+    },
+    {
+        "id": 333,
+        "price": 1500,
+        "date_from": "2024-06-30",
+        "date_to": "2024-07-30",
+        "user_id": 3,
+        "car_id": 3
+    },
+    {
+        "id": 4,
+        "price": 2000,
+        "date_from": "2024-08-15",
+        "date_to": "2024-08-30",
+        "user_id": 4,
+        "car_id": 4
+    },
+    {
+        "id": 6,
+        "price": 1123,
+        "date_from": "2024-05-05",
+        "date_to": "2024-06-06",
+        "user_id": 10,
+        "car_id": 10
+    },
+    {
+        "id": 16,
+        "price": 1000,
+        "date_from": "2024-05-28",
+        "date_to": "2024-05-29",
+        "user_id": 7,
+        "car_id": 1
+    },
+    {
+        "id": 17,
+        "price": 1000,
+        "date_from": "2024-05-28",
+        "date_to": "2024-05-29",
+        "user_id": 7,
+        "car_id": 1
+    },
+    {
+        "id": 18,
+        "price": 1000,
+        "date_from": "2024-05-28",
+        "date_to": "2024-05-29",
+        "user_id": 7,
+        "car_id": 1
+    },
+    {
+        "id": 19,
+        "price": 1000,
+        "date_from": "2024-05-28",
+        "date_to": "2024-05-29",
+        "user_id": 7,
+        "car_id": 1
+    },
+    {
+        "id": 20,
+        "price": 1000,
+        "date_from": "2024-05-28",
+        "date_to": "2024-05-29",
+        "user_id": 7,
+        "car_id": 1
+    },
+    {
+        "id": 21,
+        "price": 15000,
+        "date_from": "2025-05-05",
+        "date_to": "2025-05-10",
+        "user_id": 7,
+        "car_id": 10
+    },
+    {
+        "id": 22,
+        "price": 15000,
+        "date_from": "2025-05-05",
+        "date_to": "2025-05-10",
+        "user_id": 7,
+        "car_id": 10
+    },
+    {
+        "id": 23,
+        "price": 15000,
+        "date_from": "2025-05-05",
+        "date_to": "2025-05-10",
+        "user_id": 7,
+        "car_id": 10
+    },
+    {
+        "id": 24,
+        "price": 15000,
+        "date_from": "2025-05-05",
+        "date_to": "2025-05-10",
+        "user_id": 7,
+        "car_id": 10
+    },
+    {
+        "id": 25,
+        "price": 15000,
+        "date_from": "2025-05-05",
+        "date_to": "2025-05-10",
+        "user_id": 7,
+        "car_id": 10
+    },
+    {
+        "id": 26,
+        "price": 15000,
+        "date_from": "2025-05-05",
+        "date_to": "2025-05-10",
+        "user_id": 7,
+        "car_id": 10
+    },
+    {
+        "id": 27,
+        "price": 15000,
+        "date_from": "2025-05-05",
+        "date_to": "2025-05-10",
+        "user_id": 7,
+        "car_id": 10
+    }
+]

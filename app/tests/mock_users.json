@@ -1,0 +1,65 @@
+[
+    {
+        "id": 10,
+        "name": null,
+        "last_name": null,
+        "passport_id": null,
+        "phone_number": null,
+        "email": "fedor@moloko.ru",
+        "hashed_password": "tut_budet_hashed_password_1"
+    },
+    {
+        "id": 2,
+        "name": null,
+        "last_name": null,
+        "passport_id": null,
+        "phone_number": null,
+        "email": "fedor@moloko.ru",
+        "hashed_password": "tut_budet_hashed_password_1"
+    },
+    {
+        "id": 3,
+        "name": null,
+        "last_name": null,
+        "passport_id": null,
+        "phone_number": null,
+        "email": "2fedor@moloko.ru",
+        "hashed_password": "tut_budet_hashed_password_1"
+    },
+    {
+        "id": 4,
+        "name": null,
+        "last_name": null,
+        "passport_id": null,
+        "phone_number": null,
+        "email": "3fedor@moloko.ru",
+        "hashed_password": "tut_budet_hashed_password_1"
+    },
+    {
+        "id": 5,
+        "name": null,
+        "last_name": null,
+        "passport_id": null,
+        "phone_number": null,
+        "email": "4fedor@moloko.ru",
+        "hashed_password": "tut_budet_hashed_password_1"
+    },
+    {
+        "id": 6,
+        "name": null,
+        "last_name": null,
+        "passport_id": null,
+        "phone_number": null,
+        "email": "5sharik@moloko.ru",
+        "hashed_password": "tut_budet_hashed_password_2"
+    },
+    {
+        "id": 7,
+        "name": null,
+        "last_name": null,
+        "passport_id": null,
+        "phone_number": null,
+        "email": "user@example.com",
+        "hashed_password": "$2b$12$5d5cbl6SiawBEcTGy2a.q.TRqJ4h/NB9vGXRIYJLwbVcTxX2MZBP2"
+    }
+]
