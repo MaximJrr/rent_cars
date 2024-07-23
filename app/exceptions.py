@@ -44,6 +44,6 @@ class CarCanNotBeRentedException(RentsException):
     detail = "There are no free cars left"
 
 
-class NoCarsException(RentsException):
+class NoCarException(RentsException):
     status_code = status.HTTP_409_CONFLICT
-    detail = "No cars"
+    detail = "No car"
