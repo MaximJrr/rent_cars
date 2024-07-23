@@ -17,7 +17,7 @@ class Cars(Base):
     quantity = Column(Integer)
     image_id = Column(Integer)
 
-    rent = relationship("Rents", back_populates="car")
+    rent = relationship("Rents", back_populates="car", cascade="all, delete-orphan")
 
     def __str__(self):
         return f"Car name: {self.name}, price: {self.price}"
