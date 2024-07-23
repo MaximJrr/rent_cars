@@ -35,5 +35,4 @@ async def create_rent(car_id: int, date_from: date, date_to: date, user: Users =
 
 @router.delete("/{rent_id}")
 async def delete_rent(rent_id: int, user: Users = Depends(get_current_user)):
-    await RentService.delete(id=rent_id, user_id=user.id)
-
+    await RentService.delete(model_id=rent_id)
