@@ -1,5 +1,5 @@
 from app.database import async_session_maker
-from sqlalchemy import select, insert, delete
+from sqlalchemy import select, insert, delete, update
 
 
 class BaseService:
@@ -34,8 +34,15 @@ class BaseService:
             return result.scalar_one_or_none()
 
     @classmethod
-    async def delete(cls, **filter_by):
+    async def delete(cls, model_id):
         async with async_session_maker() as session:
-            query = delete(cls.model).filter_by(**filter_by)
+            query = delete(cls.model).filter_by(id=model_id)
+            await session.execute(query)
+            await session.commit()
+
+    @classmethod
+    async def update(cls, model_id: int, **filter_by):
+        async with async_session_maker() as session:
+            query = update(cls.model).where(cls.model.id == model_id).values(**filter_by)
             await session.execute(query)
             await session.commit()
