@@ -12,7 +12,7 @@ class Rents(Base):
     date_from = Column(Date, nullable=False)
     date_to = Column(Date, nullable=False)
     user_id = Column(ForeignKey("users.id"))
-    car_id = Column(ForeignKey("cars.id"))
+    car_id = Column(ForeignKey("cars.id", ondelete='CASCADE'))
 
     user = relationship("Users", back_populates="rent")
     car = relationship("Cars", back_populates="rent")
