@@ -1,4 +1,7 @@
 from fastapi import APIRouter, Response, Depends
+from fastapi.responses import JSONResponse
+
+from starlette.status import HTTP_204_NO_CONTENT
 
 from app.exceptions import UserAlreadyExistsException, UserNotExistsException, PasswordNotCorrectException
 from app.users.auth import get_hash_password, verify_password, create_access_token
@@ -68,3 +71,8 @@ async def update_user_partial(user_id: int,
 
     return await UserService.update(model_id=user_id, **user_update.dict(exclude_unset=True))
 
+
+@router.delete("/{user_id}")
+async def delete_user(user_id: int, current_user: Users = Depends(check_user_authorization)):
+    await UserService.delete(model_id=user_id)
+    return JSONResponse(content={"message": "User deleted successfully"})
