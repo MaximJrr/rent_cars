@@ -3,7 +3,8 @@ from fastapi import Request, Depends
 from jose import jwt, JWTError
 from app.config import settings
 from app.exceptions import TokenNotExistsException, InvalidTokenFormatException, ExpiredTokenException, \
-    UserNotExistsException
+    UserNotExistsException, NotAuthorizedToUpdateThisUser, UserNotFoundException
+from app.users.model import Users
 from app.users.service import UserService
 
 
@@ -37,3 +38,15 @@ async def get_current_user(token: str = Depends(get_token)):
         raise UserNotExistsException
 
     return user
+
+
+async def check_user_authorization(user_id: int, current_user: Users = Depends(get_current_user)):
+    user = await UserService.get_by_id(model_id=user_id)
+
+    if user_id != current_user.id:
+        raise NotAuthorizedToUpdateThisUser
+
+    if not user:
+        raise UserNotFoundException
+
+    return current_user
