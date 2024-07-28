@@ -1,8 +1,6 @@
 from fastapi import APIRouter, Response, Depends
 from fastapi.responses import JSONResponse
 
-from starlette.status import HTTP_204_NO_CONTENT
-
 from app.exceptions import UserAlreadyExistsException, UserNotExistsException, PasswordNotCorrectException
 from app.users.auth import get_hash_password, verify_password, create_access_token
 from app.users.model import Users
@@ -46,7 +44,7 @@ async def login_user(response: Response, user_data: SUsersAuth):
 @router.post("/logout")
 async def logout_user(response: Response):
     response.delete_cookie("access_token")
-    return {"user logout"}
+    return JSONResponse(content={"message": "user logout"})
 
 
 @router.get("/me")
