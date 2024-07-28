@@ -9,7 +9,7 @@ class SRents(BaseModel):
     total_days: int
     date_from: date
     date_to: date
-    user_id: int
+    car_id: int
 
     class Config:
         orm_mode = True
