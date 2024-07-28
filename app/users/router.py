@@ -2,10 +2,10 @@ from fastapi import APIRouter, Response, Depends
 
 from app.exceptions import UserAlreadyExistsException, UserNotExistsException, PasswordNotCorrectException
 from app.users.auth import get_hash_password, verify_password, create_access_token
-from app.users.dependencies import get_current_user
 from app.users.model import Users
 from app.users.service import UserService
-from app.users.schemas import SUsersAuth
+from app.users.schemas import SUsersAuth, SUserUpdate, SUserUpdatePartial, SUser
+from app.users.dependencies import get_current_user, check_user_authorization
 
 router = APIRouter(
     prefix="/auth",
@@ -49,3 +49,22 @@ async def logout_user(response: Response):
 @router.get("/me")
 async def get_me(user: Users = Depends(get_current_user)):
     return user
+
+
+@router.put("/{user_id}")
+async def update_user(user_id: int,
+                      user_update: SUserUpdate,
+                      current_user: Users = Depends(check_user_authorization)
+                      ) -> SUser:
+
+    return await UserService.update(model_id=user_id, **user_update.dict())
+
+
+@router.patch("/{user_id}")
+async def update_user_partial(user_id: int,
+                              user_update: SUserUpdatePartial,
+                              current_user: Users = Depends(check_user_authorization)
+                              ) -> SUser:
+
+    return await UserService.update(model_id=user_id, **user_update.dict(exclude_unset=True))
+
