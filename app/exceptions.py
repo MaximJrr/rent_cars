@@ -57,3 +57,8 @@ class UserNotFoundException(RentsException):
 class NotAuthorizedToUpdateThisUser(RentsException):
     status_code = status.HTTP_403_FORBIDDEN
     detail = "Not authorized to update this user"
+
+
+class NoRentException(RentsException):
+    status_code = status.HTTP_409_CONFLICT
+    detail = "No rent"
