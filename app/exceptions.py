@@ -47,3 +47,13 @@ class CarCanNotBeRentedException(RentsException):
 class NoCarException(RentsException):
     status_code = status.HTTP_409_CONFLICT
     detail = "No car"
+
+
+class UserNotFoundException(RentsException):
+    status_code = status.HTTP_404_NOT_FOUND
+    detail = "User not found"
+
+
+class NotAuthorizedToUpdateThisUser(RentsException):
+    status_code = status.HTTP_403_FORBIDDEN
+    detail = "Not authorized to update this user"
