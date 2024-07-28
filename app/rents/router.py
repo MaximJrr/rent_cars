@@ -3,7 +3,7 @@ from datetime import date
 
 from pydantic.tools import parse_obj_as
 
-from app.exceptions import CarCanNotBeRentedException
+from app.exceptions import CarCanNotBeRentedException, NoRentException
 from app.rents.schemas import SRents
 from app.rents.service import RentService
 from app.users.model import Users
@@ -36,3 +36,13 @@ async def create_rent(car_id: int, date_from: date, date_to: date, user: Users =
 @router.delete("/{rent_id}")
 async def delete_rent(rent_id: int, user: Users = Depends(get_current_user)):
     await RentService.delete(model_id=rent_id)
+
+
+@router.get("/{rent_id}")
+async def get_rent_by_id(rent_id: int, user: Users = Depends(get_current_user)) -> SRents:
+    rent = await RentService.get_by_id(model_id=rent_id)
+
+    if not rent:
+        raise NoRentException
+
+    return rent
