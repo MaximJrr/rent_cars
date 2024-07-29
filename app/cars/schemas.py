@@ -26,16 +26,32 @@ class CarArgs:
 
 class SCars(BaseModel):
     id: int
+    name: str | None
+    model: str | None
+    price: int | None
+    transmission: str | None
+    wheel_drive: str | None
+    quantity: int | None
+    car_body: str | None
+    engine: str | None
+    additional_information: dict | None
+    image_id: int | None
+
+    class Config:
+        orm_mode = True
+
+
+class ScarsUpdate(BaseModel):
     name: str
-    model: Optional[str] = None
-    price: Optional[int] = None
-    transmission: Optional[str] = None
-    wheel_drive: Optional[str] = None
-    quantity: Optional[int] = None
-    car_body: Optional[str] = None
-    engine: Optional[str] = None
-    additional_information: Optional[dict] = None
-    image_id: Optional[int] = None
+    model: str
+    price: int
+    transmission: str
+    wheel_drive: str
+    quantity: int
+    car_body: str
+    engine: str
+    additional_information: dict
+    image_id: int
 
     class Config:
         orm_mode = True
