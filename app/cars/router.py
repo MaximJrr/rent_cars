@@ -1,6 +1,5 @@
 from fastapi import APIRouter
-from fastapi import Depends
-from app.cars.schemas import CarArgs, SCars
+from app.cars.schemas import SCars, ScarsUpdate
 from app.cars.service import CarService
 from app.exceptions import NoCarException
 
@@ -27,16 +26,13 @@ async def get_car_by_id(car_id: int) -> SCars:
 
 
 @router.put("/{car_id}")
-async def update_car(car_args: CarArgs = Depends()):
-    return await CarService.update(model_id=car_args.car_id,
-                                   name=car_args.name,
-                                   model=car_args.model,
-                                   price=car_args.price,
-                                   car_body=car_args.car_body,
-                                   transmission=car_args.transmission,
-                                   engine=car_args.engine,
-                                   wheel_drive=car_args.wheel_drive
-                                   )
+async def update_car(car_id: int, car_update: ScarsUpdate) -> SCars:
+    car = await CarService.get_by_id(model_id=car_id)
+
+    if not car:
+        raise NoCarException
+
+    return await CarService.update(model_id=car_id, **car_update.dict())
 
 
 @router.delete("/{car_id}")
