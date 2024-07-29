@@ -38,3 +38,8 @@ async def update_car(car_id: int, car_update: ScarsUpdate) -> SCars:
 @router.delete("/{car_id}")
 async def delete_car(car_id: int):
     return await CarService.delete(model_id=car_id)
+
+
+@router.get("/available/")
+async def get_available_cars() -> list[SCars]:
+    return await CarService.get_available_cars()
