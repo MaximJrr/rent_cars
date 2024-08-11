@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  db:
+    image: postgres:15.2
+    container_name: rent_db
+    env_file:
+      - .env-not-dev
+    ports:
+      - 5434:5432
+
+  redis:
+    image: redis:7
+    container_name: rent_redis
+    env_file:
+      - .env-not-dev
+
+
+  rent:
+    build:
+      context: .
+    container_name: rent_app
+    env_file:
+      - .env-not-dev
+    command: ["/bin/sh", "-c", "sleep 10 && /rent_car/docker/app.sh"]
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+      - redis
