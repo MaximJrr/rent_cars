@@ -1,14 +1,15 @@
-from fastapi import APIRouter, Depends
 from datetime import date
 
+from fastapi import APIRouter, Depends
+from fastapi_cache.decorator import cache
 from pydantic.tools import parse_obj_as
 
 from app.exceptions import CarCanNotBeRentedException, NoRentException
 from app.rents.schemas import SRents
 from app.rents.service import RentService
-from app.users.model import Users
-from app.users.dependencies import get_current_user
 from app.tasks.tasks import send_rent_confirmation_email
+from app.users.dependencies import get_current_user
+from app.users.model import Users
 
 router = APIRouter(
     prefix="/rents",
@@ -17,6 +18,7 @@ router = APIRouter(
 
 
 @router.get("")
+@cache(expire=30)
 async def get_rents(user: Users = Depends(get_current_user)) -> list[SRents]:
     return await RentService.get_all(user_id=user.id)
 
