@@ -1,8 +1,9 @@
 from fastapi import APIRouter
+from fastapi_cache.decorator import cache
+
 from app.cars.schemas import SCars, ScarsUpdate
 from app.cars.service import CarService
 from app.exceptions import NoCarException
-
 
 router = APIRouter(
     prefix="/api/cars",
@@ -11,6 +12,7 @@ router = APIRouter(
 
 
 @router.get("")
+@cache(expire=30)
 async def get_all_cars() -> list[SCars]:
     return await CarService.get_all()
 
@@ -41,5 +43,6 @@ async def delete_car(car_id: int):
 
 
 @router.get("/available/")
+@cache(expire=30)
 async def get_available_cars() -> list[SCars]:
     return await CarService.get_available_cars()
