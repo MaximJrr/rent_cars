@@ -1,5 +1,6 @@
-from app.rents.service import RentService
 from datetime import datetime
+
+from app.rents.service import RentService
 
 
 async def test_rent_crud():

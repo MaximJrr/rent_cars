@@ -2,8 +2,8 @@ from sqladmin.authentication import AuthenticationBackend
 from starlette.requests import Request
 from starlette.responses import RedirectResponse
 
-from app.exceptions import UserNotExistsException, PasswordNotCorrectException
-from app.users.auth import verify_password, create_access_token
+from app.exceptions import PasswordNotCorrectException, UserNotExistsException
+from app.users.auth import create_access_token, verify_password
 from app.users.dependencies import get_current_user
 from app.users.service import UserService
 

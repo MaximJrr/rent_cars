@@ -1,9 +1,11 @@
-from app.cars.models import Cars
-from app.rents.models import Rents
-from app.base_services.base import BaseService
 from datetime import date
+
+from sqlalchemy import and_, func, insert, or_, select
+
+from app.base_services.base import BaseService
+from app.cars.models import Cars
 from app.database import async_session_maker
-from sqlalchemy import insert, select, func, and_, or_
+from app.rents.models import Rents
 
 
 class RentService(BaseService):

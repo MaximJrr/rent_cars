@@ -1,7 +1,6 @@
-from app.database import async_session_maker
-from sqlalchemy import select, insert, delete, update
+from sqlalchemy import delete, insert, select, update
 
-from app.users.schemas import SUserUpdatePartial
+from app.database import async_session_maker
 
 
 class BaseService:
@@ -45,7 +44,7 @@ class BaseService:
     @classmethod
     async def update(cls, model_id: int, **filter_by):
         async with async_session_maker() as session:
-            query = update(cls.model).where(cls.model.id == model_id).values(**filter_by)
+            query = (update(cls.model).where(cls.model.id == model_id).values(**filter_by))
             await session.execute(query)
             await session.commit()
             updated_object = await cls.get_by_id(model_id=model_id)

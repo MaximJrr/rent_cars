@@ -1,12 +1,16 @@
-from fastapi import APIRouter, Response, Depends
+from fastapi import APIRouter, Depends, Response
 from fastapi.responses import JSONResponse
 
-from app.exceptions import UserAlreadyExistsException, UserNotExistsException, PasswordNotCorrectException
-from app.users.auth import get_hash_password, verify_password, create_access_token
+from app.exceptions import (
+    PasswordNotCorrectException,
+    UserAlreadyExistsException,
+    UserNotExistsException,
+)
+from app.users.auth import create_access_token, get_hash_password, verify_password
+from app.users.dependencies import check_user_authorization, get_current_user
 from app.users.model import Users
+from app.users.schemas import SUser, SUsersAuth, SUserUpdate, SUserUpdatePartial
 from app.users.service import UserService
-from app.users.schemas import SUsersAuth, SUserUpdate, SUserUpdatePartial, SUser
-from app.users.dependencies import get_current_user, check_user_authorization
 
 router = APIRouter(
     prefix="/auth",

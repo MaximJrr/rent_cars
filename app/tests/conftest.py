@@ -1,18 +1,18 @@
 import asyncio
 import json
-import pytest_asyncio
 from datetime import datetime
 
 import pytest
+import pytest_asyncio
+from httpx import AsyncClient
 from sqlalchemy import insert
 
+from app.cars.models import Cars
 from app.config import settings
 from app.database import Base, async_session_maker, engine
-from app.cars.models import Cars
+from app.main import app as fastapi_app
 from app.rents.models import Rents
 from app.users.model import Users
-from app.main import app as fastapi_app
-from httpx import AsyncClient
 
 
 @pytest.fixture(scope="session", autouse=True)

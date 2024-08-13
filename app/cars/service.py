@@ -1,8 +1,8 @@
-from app.cars.models import Cars
-from app.base_services.base import BaseService
-from app.database import async_session_maker
-
 from sqlalchemy import select
+
+from app.base_services.base import BaseService
+from app.cars.models import Cars
+from app.database import async_session_maker
 
 
 class CarService(BaseService):

@@ -1,9 +1,17 @@
 from datetime import datetime
-from fastapi import Request, Depends
-from jose import jwt, JWTError
+
+from fastapi import Depends, Request
+from jose import JWTError, jwt
+
 from app.config import settings
-from app.exceptions import TokenNotExistsException, InvalidTokenFormatException, ExpiredTokenException, \
-    UserNotExistsException, NotAuthorizedToUpdateThisUser, UserNotFoundException
+from app.exceptions import (
+    ExpiredTokenException,
+    InvalidTokenFormatException,
+    NotAuthorizedToUpdateThisUser,
+    TokenNotExistsException,
+    UserNotExistsException,
+    UserNotFoundException,
+)
 from app.users.model import Users
 from app.users.service import UserService
 

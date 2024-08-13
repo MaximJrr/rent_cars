@@ -1,5 +1,6 @@
-from app.users.service import UserService
 import pytest
+
+from app.users.service import UserService
 
 
 @pytest.mark.parametrize("user_id, email, is_exists", [

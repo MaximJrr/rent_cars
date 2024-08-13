@@ -1,6 +1,6 @@
-from httpx import AsyncClient
 import pytest
 from fastapi import status
+from httpx import AsyncClient
 
 
 @pytest.mark.parametrize("car_id, date_from, date_to, status_code", [
