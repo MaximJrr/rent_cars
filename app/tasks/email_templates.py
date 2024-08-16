@@ -22,3 +22,20 @@ def create_rent_confirmation_template(rent: dict, email_to: EmailStr):
     )
 
     return email
+
+
+def create_new_car_template(car: dict, emails_to: EmailStr):
+    email = EmailMessage()
+    email["Subject"] = f"Hello, dear"
+    email["From"] = settings.SMTP_USER
+    email['To'] = emails_to
+
+    email.set_content(
+        f"""
+        <h1>We have a new car!</h1>
+        Check out this new car: {car['name']} {car['model']}, priced at: {car['price']} rubles per day!
+        """,
+        subtype="html"
+    )
+
+    return email
