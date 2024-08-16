@@ -23,9 +23,12 @@ class BaseService:
     @classmethod
     async def create_new(cls, **data):
         async with async_session_maker() as session:
-            query = insert(cls.model).values(**data)
-            await session.execute(query)
+            query = insert(cls.model).values(**data).returning(cls.model)
+            result = await session.execute(query)
             await session.commit()
+            created_obj = result.scalar_one()
+            return created_obj
+
 
     @classmethod
     async def get_by_id(cls, model_id: int):
